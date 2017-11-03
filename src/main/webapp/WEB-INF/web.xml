@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="spring4-chap07" version="3.0">
+	<display-name>spring4-chap07</display-name>
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- dispatcher servlet은 내부적으로 스프링 컨테이너를 생성하는데 -->
+		<!-- contextConfigLocation의 초기화 파라미터를 이용해 컨테이너 생성할때 -->
+		<!-- 사용할 설정 파일을 지정한다. -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/mvc-quick-start.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- 서블릿 매핑 설정에 따른 매핑 경로 -->
+	<!-- 요청URL 서블릿매핑URL패턴 controller매핑경로 -->
+	<!-- spring4.chap07/message/list.do : /message/* →  /list.do -->
+	<!-- spring4.chap07/message/list.do : *.do → /message/list.do  -->
+	<!-- spring4.chap07/comic : /comic →  /comic  --> 
+
+	<servlet>
+		<servlet-name>dispatcher2</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>
+org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        	</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				net.madvirus.spring4.chap07.quickstart.MvcQuickStartConfig
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher2</servlet-name>
+		<url-pattern>*.do2</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>dispatcher3</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/sample.xml
+			</param-value>
+		</init-param>
+<!-- 		<init-param> -->
+<!-- 			<param-name>contextConfigLocation</param-name> -->
+<!-- 			<param-value> -->
+<!-- 				net.madvirus.spring4.chap07.config.SampleConfig -->
+<!-- 			</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>contextClass</param-name> -->
+<!-- 			<param-value> -->
+<!-- org.springframework.web.context.support.AnnotationConfigWebApplicationContext -->
+<!--         	</param-value> -->
+<!-- 		</init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher3</servlet-name>
+		<url-pattern>/</url-pattern>
+		<!-- URL에 do와 같은 확장자를 사용하지 않으면서 -->
+		<!-- controller mapping 경로로 전체 경로를 사용하고 싶음 -->
+		<!-- 	<mvc:annotation-driven conversion-service="formattingConversionService" />	 -->
+		<!-- 	<mvc:default-servlet-handler /> 두개 sample.xml에 넣기 -->
+		<!-- 이렇게 하면 jsp요청을 제외한 나머지 모든 요청을 dispatcher servlet이 받게됨 -->
+	</servlet-mapping>
+
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
