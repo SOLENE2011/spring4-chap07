@@ -21,6 +21,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("/members/{memberId}")
+	// @RequestMapping에 {변수} 형식의 경로 변수 사용 가능하고
+	// @PathVariable 사용하면 경로 변수의 값을 파라미터로 전달받을 수 있다.
+	// 파라미터와 변수 동일해야함!
 	public String memberDetail(@PathVariable String memberId, Model model) {
 		MemberInfo mi = memberService.getMemberInfo(memberId);
 		if (mi == null) {
