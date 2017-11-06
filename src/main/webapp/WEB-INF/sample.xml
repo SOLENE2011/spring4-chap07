@@ -88,6 +88,7 @@
 
 	<!-- <bean class="net.madvirus.spring4.chap07.exhandler.CommonExceptionHandler"/> -->
 
+	<!-- 에러페이지를 출력하려며 MessageSource를 등록해야함. -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

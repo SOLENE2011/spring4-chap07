@@ -13,6 +13,7 @@ public class LoginCommandValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		// 파라미터가 올바르지 않을 경우 그 내용을 저장하기 위해 사용된다.
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required");
 	}

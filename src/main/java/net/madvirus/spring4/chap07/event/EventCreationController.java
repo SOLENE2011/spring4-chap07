@@ -12,6 +12,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("eventForm")
+// 각 화면 간 모델 데이터 공유하기 위한 annotation
+// 임시 목적으로 사용될 객체를 세션에 보관할 때
 public class EventCreationController {
 
 	private static final String EVENT_CREATION_STEP1 = "event/creationStep1";
@@ -22,6 +24,8 @@ public class EventCreationController {
 //	@RequestMapping("/newevent/step1")
 //	public String step1(Model model) {
 //		model.addAttribute("eventForm", new EventForm());
+// SessionAttributes가 제대로 동작하려면 모델에 같은 이름을 갖는 객체 추가해야함
+// 보통 첫번째 단계를 처리하는 컨트롤러 메서드에서 모델에 객체를 추가한다.
 //		return EVENT_CREATION_STEP1;
 //	}
 

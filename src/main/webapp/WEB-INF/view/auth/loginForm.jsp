@@ -6,10 +6,12 @@
 <body>
 
 <form:form commandName="loginCommand">
+<!-- 폼 태그에서 커맨드 객체 정보를 사용할 수 있다 -->
 <form:errors element="div" />
 <label for="email">이메일</label>: 
 <input type="text" name="email" id="email" value="${loginCommand.email}">
 <form:errors path="email"/> <br>
+<!-- form:form 태그에서 지정한 커맨드 객체의 에러코드를 이용해 에러메시지 출력 -->
 
 <label for="password">암호</label>: 
 <input type="password" name="password" id="password">

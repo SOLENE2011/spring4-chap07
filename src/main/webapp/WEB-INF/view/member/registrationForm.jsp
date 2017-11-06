@@ -11,6 +11,10 @@
 <body>
 
 <spring:hasBindErrors name="memberInfo" />
+<!-- spring:hasBindErrors name 속성으로 커맨드 객체 이름 입력하면-->
+<!-- form:errors 이용해서 커맨드 객체에 대한 여러 메시지를 출력할 수 있다. -->
+<!-- form:form 태그와 다른 것은 path속성에 커맨드 객체 이름 같이 사용해야 함 -->
+
 <form method="post">
 <label for="email">이메일</label>: 
 <input type="text" name="email" id="email" value="${memberInfo.email}"/>

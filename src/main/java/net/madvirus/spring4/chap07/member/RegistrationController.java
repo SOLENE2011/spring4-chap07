@@ -22,7 +22,10 @@ public class RegistrationController {
 	public String regist(
 			@ModelAttribute("memberInfo") MemberRegistRequest memRegReq,
 			BindingResult bindingResult) {
+			// BindingResult : 에러 정보를 보관.
+		// BindingResult와 Errors 는 객체 바로 뒤에 위치해야 한다.
 		new MemberRegistValidator().validate(memRegReq, bindingResult);
+		// validate() 메서드를 실행한 후 오류가 존재하면 bindingResult.hasErrors() 메서드는 true 리턴
 		if (bindingResult.hasErrors()) {
 			return MEMBER_REGISTRATION_FORM;
 		}
