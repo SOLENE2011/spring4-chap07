@@ -28,6 +28,8 @@ public class CalculationController {
 	}
 
 	@ExceptionHandler(RuntimeException.class)
+	// exception이 발생할 때 직접 exception을 처리하고 싶다면.
+	// ()는 exception type
 	public String handleException(HttpServletResponse response) {
 		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		return "error/exception";

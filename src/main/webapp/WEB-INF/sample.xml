@@ -24,13 +24,21 @@
 
 	<mvc:resources mapping="/images/**" location="/images/, /WEB-INF/resources/"
 		cache-period="60" />
+	<!-- 정적 자원 설정하기 -->
+	<!-- 캐시를 하면 반응 속도 개선 가능 -->
 
 	<mvc:interceptors>
+	<!-- HandlerInterceptor설정과 경로설정 -->
+	<!-- 태그 내부에 정의한 빈 객체를 핸들로 인터셉터로 사용하고 -->
+	<!-- dispatcher servlet이 처리하는 요청에 대해 핸들러 인터셉터 적용 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/acl/**" />
 			<bean class="net.madvirus.spring4.chap07.common.AuthInterceptor" />
 		</mvc:interceptor>
+		
+		<!-- 핸들러 인터셉터 적용 -->
 		<bean class="net.madvirus.spring4.chap07.common.MeasuringInterceptor" />
+		
 		<mvc:interceptor>
 			<mvc:mapping path="/acl/**" />
 			<mvc:mapping path="/header/**" />
@@ -39,6 +47,7 @@
 			<ref bean="commonModelInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<!-- 이 순서대로 interceptor가 적용됨니다  -->
 
 	<bean id="commonModelInterceptor"
 		class="net.madvirus.spring4.chap07.common.CommonModelInterceptor" />

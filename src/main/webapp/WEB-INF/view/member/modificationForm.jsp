@@ -8,7 +8,12 @@
 </head>
 <body>
 
+<!-- form:form 태그의 method 속성과 action 설정하지 않으면 -->
+<!-- post로 설정되고 액션은 현재 요청 URL 값이 설정된다. -->
 <form:form commandName="modReq">
+<!-- commandName은 기본값 command가 아니라면 명시해줘야함 -->
+
+<!-- value 대신 input path 쓰면 commandName 생략가능 그냥 id-->
 <input type="hidden" name="id" value="${modReq.id}" />
 <label for="email">이메일</label>: 
 <input type="text" name="email" id="email" value="${modReq.email}"/> 

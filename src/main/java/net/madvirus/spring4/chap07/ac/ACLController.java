@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+// 컨트롤러 : 웹 요청을 처리하는 객체.
 @Controller
 public class ACLController {
 

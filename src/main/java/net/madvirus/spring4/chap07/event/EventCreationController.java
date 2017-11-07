@@ -29,6 +29,10 @@ public class EventCreationController {
 //		return EVENT_CREATION_STEP1;
 //	}
 
+	// 또 다른 방법
+	// 모델 객체를 추가할 필요가 없음.
+	// 세션에 동일한 이름을 갖는 객체가 존재하면
+	// 기존 것을 모델 객체로 사용한다.
 	@ModelAttribute("eventForm")
 	public EventForm formData() {
 		return new EventForm();
@@ -63,6 +67,8 @@ public class EventCreationController {
 	@RequestMapping(value = "/newevent/done", method = RequestMethod.POST)
 	public String done(@ModelAttribute("eventForm") EventForm formData, SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
+		// 세션에서 객체를 제거함.
+		// 하지만 세션에서만 제거할뿐 모델의 값으로는 계속 사용할 수 있다.
 		return EVENT_CREATION_DONE;
 	}
 

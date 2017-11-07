@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 // <mvc:annotation-driven>과 동일하게 스프링 MVC 설정하는데 필요한 빈을 자동 등록해준다.
+// 둘이 같이 세트!
 public class MvcQuickStartConfig {
 
 	@Bean
